@@ -16,13 +16,13 @@ A collection of helpful shortcodes that I use in my own work that I wanted to sh
 
 = GitHub Gists =
 
-Usage: \[github_gist source="http://gist.github.com/your-account/gist-id"\]
+\[github_gist source="http://gist.github.com/your-account/gist-id"\]
 
 This will display a GitHub Gist. The source attribute is the URL to the Gist and is required.
 
 = Embed PDF =
 
-Usage: \[embed_pdf source="http://yoursite.com/path-to-the-pdf.pdf" width="100" height="100"\]
+\[embed_pdf source="http://yoursite.com/path-to-the-pdf.pdf" width="100" height="100"\]
 
 This shortcode will embed a PDF into the page rather than making it a seperate link that must be clicked to be viewed. It is displayed in the browsers default PDF reader since it is embedded as an application. The source attribute is the URL of the PDF and is required. The width and height attribute will set the size of the embedded application, and are both optional. If they are not entered then the width is set to 100% and the height to 600.
 
