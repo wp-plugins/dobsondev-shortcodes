@@ -17,31 +17,31 @@ A collection of helpful shortcodes that I use in my own work that I wanted to sh
 = Shortcodes Included =
 
 * Embed PDFs - Embeds PDFs into pages rather than separate links.
-* [GitHub Gists](http://gist.github.com/) - Easily add GitHub gists to your site or blog.
-* Embed Twitch Stream - Embeds a Twitch Stream into the page.
-* Embed YouTube Video - Embeds a YouTube Video into the page.
+* Embed [GitHub Gists](http://gist.github.com/) - Easily add GitHub gists to your site or blog.
+* Embed [Twitch Stream](http://twitch.tv/) - Embeds a Twitch Stream into the page.
+* Embed [YouTube Video](http://youtube.com/) - Embeds a YouTube Video into the page.
 
-** Embed PDF **
+**Embed PDF**
 
-'[embed_pdf source="http://yoursite.com/path-to-the-pdf.pdf" width="###" height="###"]'
+[embed_pdf source="http://yoursite.com/path-to-the-pdf.pdf" width="###" height="###"]
 
 This Shortcode will embed a PDF into the page rather than making it a seperate link that must be clicked to be viewed. It is displayed in the browsers default PDF reader since it is embedded as an application. The source attribute is the URL of the PDF and is required. The width and height attribute will set the size of the embedded application, and are both optional. If they are not entered then the width is set to 100% and the height to 600.
 
-** Embed GitHub Gists **
+**Embed GitHub Gists**
 
-'[embedGist source="http://gist.github.com/your-account/gist-id"]'
+[embedGist source="http://gist.github.com/your-account/gist-id"]
 
 This Shortcode will embed a GitHub Gist into the page. The Gist will be embedded in a little box that makes it easy to share code samples with other developers (or whoever you want to share them with). The source attribute is the URL to the Gist and is required.
 
-** Embed Twitch Stream **
+**Embed Twitch Stream**
 
-'[embedTwitch username="your-username" width="###" height="###"]'
+[embedTwitch username="your-username" width="###" height="###"]
 
 This Shortcode will embed a Twitch stream into the page. The username attribute is the Twitch Stream's username, which can be found at the end of the URL of the stream. An example would be [http://twitch.tv/day9tv](http://twitch.tv/day9tv). The username for this stream is "day9tv", so that would be entered. The username is a required attribute. The width and height attributes will set the size of the embedded stream, and both are optional attributes. If they are not entered the width will default to 620 and the height will default to 378.
 
-** Embed YouTube Video **
+**Embed YouTube Video**
 
-'[embedYouTube video="video-id" width="###" height="###"\]'
+[embedYouTube video="video-id" width="###" height="###"\]
 
 This Shortcode will embed a YouTube video into the page. The video attribute is the YouTube video ID of the video you want to embed into the page. It can be found at the end of the URL on YouTube. For example, the video located at [https://www.youtube.com/watch?v=uCdfze1etec](https://www.youtube.com/watch?v=uCdfze1etec) has the video ID "uCdfze1etec". You will always find the video ID after the "watch?v=". The video attribute is required. The width and height attributes will set the size of the embedded video, and both are optional attributes. If they are not entered the width will default to 560 and the height will default to 315.
 
@@ -60,18 +60,21 @@ If you have any shortcodes you want to suggest or to add to the plugin, please c
 
 == Changelog ==
 
-= 0.667 =
+= - 0.667 - =
 
-** New Features **
+**New Features**
+
 * Added a Shortcode for embedding Twitch.tv streams on your site
 * Added a Shortcode for embedding YouTube videos on your site
 
-** Changes **
+**Changes**
+
 * GitHub Gist Shortcode changed from \[github_gist source=""\] to \[embedGist source=""\]
 
-** Bug Fixes **
+**Bug Fixes**
+
 * Refined method for checking HTTP Headers
 
-= 0.666 =
+= - 0.666 - =
 
 * Initial Beta Release
