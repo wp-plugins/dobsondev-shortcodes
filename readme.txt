@@ -3,10 +3,10 @@ Contributors: DobsonDev
 Donate link: https://dobsondev.com/donate/
 License: GPLv2
 License URI: http://www.gnu.org/licenses/gpl.html
-Tags: shortcodes, dobsondev, github, pdf
+Tags: dobsondev, shortcodes, pdf, portable document format, github gists, github, gists, twitch streams, twitch, YouTube video, YouTube
 Requires at least: 2.5
 Tested up to: 3.8.1
-Stable tag: 0.666
+Stable tag: 0.667
 
 Add a collection of helpful shortcodes to your site.
 
@@ -14,22 +14,36 @@ Add a collection of helpful shortcodes to your site.
 
 A collection of helpful shortcodes that I use in my own work that I wanted to share with the WordPress Community. If you want to suggest any shortcodes please email me at [alex@dobsondev.com](mailto:alex@dobsondev.com).
 
-= GitHub Gists =
+= Shortcodes Included =
 
-\[github_gist source="http://gist.github.com/your-account/gist-id"\]
-
-This will display a GitHub Gist. The source attribute is the URL to the Gist and is required.
-
-= Embed PDF =
-
-\[embed_pdf source="http://yoursite.com/path-to-the-pdf.pdf" width="100" height="100"\]
-
-This shortcode will embed a PDF into the page rather than making it a seperate link that must be clicked to be viewed. It is displayed in the browsers default PDF reader since it is embedded as an application. The source attribute is the URL of the PDF and is required. The width and height attribute will set the size of the embedded application, and are both optional. If they are not entered then the width is set to 100% and the height to 600.
-
-== Shortcodes Included ==
-
+* Embed PDFs - Embeds PDFs into pages rather than separate links.
 * [GitHub Gists](http://gist.github.com/) - Easily add GitHub gists to your site or blog.
-* Embed PDFs - Embed PDFs into pages rather than separate links.
+* Embed Twitch Stream - Embeds a Twitch Stream into the page.
+* Embed YouTube Video - Embeds a YouTube Video into the page.
+
+** Embed PDF **
+
+'[embed_pdf source="http://yoursite.com/path-to-the-pdf.pdf" width="###" height="###"]'
+
+This Shortcode will embed a PDF into the page rather than making it a seperate link that must be clicked to be viewed. It is displayed in the browsers default PDF reader since it is embedded as an application. The source attribute is the URL of the PDF and is required. The width and height attribute will set the size of the embedded application, and are both optional. If they are not entered then the width is set to 100% and the height to 600.
+
+** Embed GitHub Gists **
+
+'[embedGist source="http://gist.github.com/your-account/gist-id"]'
+
+This Shortcode will embed a GitHub Gist into the page. The Gist will be embedded in a little box that makes it easy to share code samples with other developers (or whoever you want to share them with). The source attribute is the URL to the Gist and is required.
+
+** Embed Twitch Stream **
+
+'[embedTwitch username="your-username" width="###" height="###"]'
+
+This Shortcode will embed a Twitch stream into the page. The username attribute is the Twitch Stream's username, which can be found at the end of the URL of the stream. An example would be [http://twitch.tv/day9tv](http://twitch.tv/day9tv). The username for this stream is "day9tv", so that would be entered. The username is a required attribute. The width and height attributes will set the size of the embedded stream, and both are optional attributes. If they are not entered the width will default to 620 and the height will default to 378.
+
+** Embed YouTube Video **
+
+'[embedYouTube video="video-id" width="###" height="###"\]'
+
+This Shortcode will embed a YouTube video into the page. The video attribute is the YouTube video ID of the video you want to embed into the page. It can be found at the end of the URL on YouTube. For example, the video located at [https://www.youtube.com/watch?v=uCdfze1etec](https://www.youtube.com/watch?v=uCdfze1etec) has the video ID "uCdfze1etec". You will always find the video ID after the "watch?v=". The video attribute is required. The width and height attributes will set the size of the embedded video, and both are optional attributes. If they are not entered the width will default to 560 and the height will default to 315.
 
 == Installation ==
 
@@ -45,6 +59,18 @@ For more information about the shortcodes avaliable through the plugin please vi
 If you have any shortcodes you want to suggest or to add to the plugin, please contact me at [alex@dobsondev.com](mailto:alex@dobsondev.com).
 
 == Changelog ==
+
+= 0.667 =
+
+** New Features **
+* Added a Shortcode for embedding Twitch.tv streams on your site
+* Added a Shortcode for embedding YouTube videos on your site
+
+** Changes **
+* GitHub Gist Shortcode changed from \[github_gist source=""\] to \[embedGist source=""\]
+
+** Bug Fixes **
+* Refined method for checking HTTP Headers
 
 = 0.666 =
 
