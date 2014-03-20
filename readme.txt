@@ -23,7 +23,7 @@ A collection of helpful shortcodes that I use in my own work that I wanted to sh
 
 **Embed PDF**
 
-[embed_pdf source="http://yoursite.com/path-to-the-pdf.pdf" width="###" height="###"]
+[embedPDF source="http://yoursite.com/path-to-the-pdf.pdf" width="###" height="###"]
 
 This Shortcode will embed a PDF into the page rather than making it a seperate link that must be clicked to be viewed. It is displayed in the browsers default PDF reader since it is embedded as an application. The source attribute is the URL of the PDF and is required. The width and height attribute will set the size of the embedded application, and are both optional. If they are not entered then the width is set to 100% and the height to 600.
 
