@@ -6,7 +6,7 @@ License URI: http://www.gnu.org/licenses/gpl.html
 Tags: dobsondev, shortcodes, pdf, portable document format, github gists, github, gists, twitch streams, twitch, YouTube video, YouTube
 Requires at least: 2.5
 Tested up to: 3.8.1
-Stable tag: 0.667
+Stable tag: 0.668
 
 Add a collection of helpful shortcodes to your site.
 
@@ -19,6 +19,7 @@ A collection of helpful shortcodes that I use in my own work that I wanted to sh
 * Embed PDFs - Embeds PDFs into pages rather than separate links.
 * Embed [GitHub Gists](http://gist.github.com/) - Easily add GitHub gists to your site or blog.
 * Embed [Twitch Stream](http://twitch.tv/) - Embeds a Twitch Stream into the page.
+* Embed [Twitch Stream](http://twitch.tv/) Chat - Embeds the chat from a Twitch Stream into the page.
 * Embed [YouTube Video](http://youtube.com/) - Embeds a YouTube Video into the page.
 
 **Embed PDF**
@@ -38,6 +39,12 @@ This Shortcode will embed a GitHub Gist into the page. The Gist will be embedded
 [embedTwitch username="your-username" width="###" height="###"]
 
 This Shortcode will embed a Twitch stream into the page. The username attribute is the Twitch Stream's username, which can be found at the end of the URL of the stream. An example would be [http://twitch.tv/day9tv](http://twitch.tv/day9tv). The username for this stream is "day9tv", so that would be entered. The username is a required attribute. The width and height attributes will set the size of the embedded stream, and both are optional attributes. If they are not entered the width will default to 620 and the height will default to 378.
+
+**Embed Twitch Stream Chat**
+
+[embedTwitchChat username="your-username" width="###" height="###"]
+
+This Shortcode will embed a Twitch stream's chat into the page. The username attribute is the Twitch Stream's username, which can be found at the end of the URL of the stream. An example would be [http://twitch.tv/day9tv](http://twitch.tv/day9tv). The username for this stream is "day9tv", so that would be entered. The username is a required attribute. The width and height attributes will set the size of the embedded chat, and both are optional attributes. If they are not entered the width will default to 350 and the height will default to 500.
 
 **Embed YouTube Video**
 
@@ -59,6 +66,12 @@ For more information about the shortcodes avaliable through the plugin please vi
 If you have any shortcodes you want to suggest or to add to the plugin, please contact me at [alex@dobsondev.com](mailto:alex@dobsondev.com).
 
 == Changelog ==
+
+= - 0.668 - =
+
+**New Features**
+
+* Added a Shortcode for embedding Twitch.tv stream chats on your site
 
 = - 0.667 - =
 

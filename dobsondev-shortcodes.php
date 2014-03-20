@@ -3,7 +3,7 @@
  * Plugin Name: DobsonDev Shortcodes
  * Plugin URI: http://dobsondev.com/portfolio/dobsondev-shortcodes/
  * Description: A collection of helpful shortcodes.
- * Version: 0.667
+ * Version: 0.668
  * Author: Alex Dobson
  * Author URI: http://dobsondev.com/
  * License: GPLv2
@@ -82,6 +82,25 @@ function dobson_embed_twitch($atts) {
   }
 }
 add_shortcode('embedTwitch', 'dobson_embed_twitch');
+
+
+/* Adds a shortcode to embed a Twitch Stream's chat */
+function dobson_embed_twitch_chat($atts) {
+  extract(shortcode_atts(array(
+    'username' => "Invalid Username",
+    'width' => "350",
+    'height' => "500",
+  ), $atts));
+  $source_headers = @get_headers("http://twitch.tv/chat/embed?channel=" . $username . "&popout_chat=true");
+  if (strpos($source_headers[0], '404 Not Found')) {
+    return '<p> Invalid Twitch channel name. Please check your username and channel settings on Twitch to make '
+    . 'sure they are setup correctly. </p>';
+  } else {
+    return '<iframe frameborder="0" scrolling="no" id="chat_embed" src="http://twitch.tv/chat/embed?channel='
+    . $username . '&popout_chat=true" height="' . $height . '" width="' . $width . '"></iframe>';
+  }
+}
+add_shortcode('embedTwitchChat', 'dobson_embed_twitch_chat');
 
 
 /* Adds a shortcode to embed a YouTube video */
