@@ -37,7 +37,7 @@ function dobson_embed_PDF($atts) {
     return '<p> Invalid PDF source. Please check your PDF source. </p>';
   } else {
     return '<object width="' . $width . '" height="' . $height . '" type="application/pdf" data="'
-    . $source . '"></object>';
+    . esc_url( $source ) . '"></object>';
   }
 }
 add_shortcode('embedPDF', 'dobson_embed_pdf');
@@ -52,7 +52,7 @@ function dobson_create_github_gist($atts) {
   if (strpos($source_headers[0], '404 Not Found')) {
     return '<p> Invalid GitHub Gist source. Please check your source. </p>';
   } else {
-    return '<script src="' . $source . '.js"></script>';
+    return '<script src="' . esc_url( $source ) . '.js"></script>';
   }
 }
 add_shortcode('embedGist', 'dobson_create_github_gist');
