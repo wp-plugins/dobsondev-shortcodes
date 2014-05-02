@@ -3,7 +3,7 @@
  * Plugin Name: DobsonDev Shortcodes
  * Plugin URI: http://dobsondev.com/portfolio/dobsondev-shortcodes/
  * Description: A collection of helpful shortcodes.
- * Version: 0.668
+ * Version: 0.669
  * Author: Alex Dobson
  * Author URI: http://dobsondev.com/
  * License: GPLv2
@@ -25,6 +25,13 @@
  */
 
 
+/* Enqueue the Style Sheet */
+function dobson_enqueue_scripts() {
+  wp_enqueue_style( 'dobsondev-shortcodes', plugins_url( 'dobsondev-shortcodes.css' , __FILE__ ) );
+}
+add_action( 'wp_enqueue_scripts', 'dobson_enqueue_scripts' );
+
+
 /* Adds a shortcode for displaying PDF's Inline */
 function dobson_embed_PDF($atts) {
   extract(shortcode_atts(array(
@@ -37,7 +44,7 @@ function dobson_embed_PDF($atts) {
     return '<p> Invalid PDF source. Please check your PDF source. </p>';
   } else {
     return '<object width="' . $width . '" height="' . $height . '" type="application/pdf" data="'
-    . esc_url( $source ) . '"></object>';
+    . $source . '"></object>';
   }
 }
 add_shortcode('embedPDF', 'dobson_embed_pdf');
@@ -52,7 +59,7 @@ function dobson_create_github_gist($atts) {
   if (strpos($source_headers[0], '404 Not Found')) {
     return '<p> Invalid GitHub Gist source. Please check your source. </p>';
   } else {
-    return '<script src="' . esc_url( $source ) . '.js"></script>';
+    return '<script src="' . $source . '.js"></script>';
   }
 }
 add_shortcode('embedGist', 'dobson_create_github_gist');
@@ -114,8 +121,10 @@ function dobson_embed_youtube($atts) {
   if (strpos($source_headers[0], '404 Not Found')) {
     return '<p> Invalid YouTube video ID. Please check your YouTube video ID. </p>';
   } else {
-    return '<iframe width="' . $width . '" height="' . $height . '" src="//www.youtube.com/embed/' . $video
-    . '" frameborder="0" allowfullscreen></iframe>';
+    return '<div class="youtube-container">'
+    . '<iframe width="' . $width . '" height="' . $height . '" src="//www.youtube.com/embed/' . $video
+    . '" frameborder="0" allowfullscreen></iframe>'
+    . '</div>';
   }
 }
 add_shortcode('embedYouTube', 'dobson_embed_youtube');

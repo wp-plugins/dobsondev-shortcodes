@@ -1,6 +1,6 @@
 === DobsonDev Shortcodes ===
 Contributors: DobsonDev
-Donate link: http://dobsondev.com/donate/
+Donate link: https://dobsondev.com/donate/
 License: GPLv2
 License URI: http://www.gnu.org/licenses/gpl.html
 Tags: dobsondev, shortcodes, pdf, portable document format, github gists, github, gists, twitch streams, twitch, YouTube video, YouTube
@@ -67,6 +67,16 @@ If you have any shortcodes you want to suggest or to add to the plugin, please c
 
 == Changelog ==
 
+= - 0.669 - =
+
+**New Features**
+
+* Added a Stylesheet for the plugin
+
+**Bug Fixes**
+
+* Made the embedded YouTube videos responsive
+
 = - 0.668 - =
 
 **New Features**
@@ -74,6 +84,7 @@ If you have any shortcodes you want to suggest or to add to the plugin, please c
 * Added a Shortcode for embedding Twitch.tv stream chats on your site
 
 **Bug Fixes**
+
 * Added esc_url() to all URL sources for shortcodes
 
 = - 0.667 - =
