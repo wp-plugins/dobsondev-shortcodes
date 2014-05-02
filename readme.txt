@@ -67,11 +67,25 @@ If you have any shortcodes you want to suggest or to add to the plugin, please c
 
 == Changelog ==
 
+= - 0.669 - =
+
+**New Features**
+
+* Added a Stylesheet for the plugin
+
+**Bug Fixes**
+
+* Made the embedded YouTube videos responsive
+
 = - 0.668 - =
 
 **New Features**
 
 * Added a Shortcode for embedding Twitch.tv stream chats on your site
+
+**Bug Fixes**
+
+* Added esc_url() to all URL sources for shortcodes
 
 = - 0.667 - =
 
