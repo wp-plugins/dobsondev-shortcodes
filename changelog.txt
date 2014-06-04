@@ -1,10 +1,27 @@
+= 0.670 =
+
+New Features
+
+* Added shortcodes for inline code snippets
+
+= 0.669 =
+
+New Features
+
+* Added a Stylesheet for the plugin
+
+Bug Fixes
+
+* Made the embedded YouTube videos responsive
+
 = 0.668 =
 
 New Features
 * Added a Shortcode for embedding Twitch.tv stream chats on your site
+* Added a Stylesheet for the plugin
 
 Bug Fixes
-* Added esc_url() to all URL sources for shortcodes
+* Made the embedded YouTube videos responsive
 
 = 0.667 =
 
