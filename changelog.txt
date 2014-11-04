@@ -1,10 +1,45 @@
+= 0.672 =
+
+Bug Fixes
+
+* Fixed a bug that would cause the PDF shortcode to redirect to www.ww.38.yoursite.com/path-to-the-pdf.pdf if the shortcode was copied as [embedPDF source="http://yoursite.com/path-to-the-pdf.pdf" width="###" height="###"]
+* Fixed the same possibly bug mentioned above with the GitHub Gists, Twitch Stream, Twitch Chat and YouTube Video embeds
+
+= 0.671 =
+
+New Features
+
+* Added a shortcode for displaying simple code blocks
+
+Bug Fixes
+
+* Renamed 'youtube-container' CSS class to 'dobdev_youtube_container' in order to ensure uniqueness
+* Added default CSS for the embedded inline code
+
+= 0.670 =
+
+New Features
+
+* Added shortcodes for inline code snippets
+
+= 0.669 =
+
+New Features
+
+* Added a Stylesheet for the plugin
+
+Bug Fixes
+
+* Made the embedded YouTube videos responsive
+
 = 0.668 =
 
 New Features
 * Added a Shortcode for embedding Twitch.tv stream chats on your site
+* Added a Stylesheet for the plugin
 
 Bug Fixes
-* Added esc_url() to all URL sources for shortcodes
+* Made the embedded YouTube videos responsive
 
 = 0.667 =
 

@@ -3,7 +3,7 @@
  * Plugin Name: DobsonDev Shortcodes
  * Plugin URI: http://dobsondev.com/portfolio/dobsondev-shortcodes/
  * Description: A collection of helpful shortcodes.
- * Version: 0.668
+ * Version: 0.672
  * Author: Alex Dobson
  * Author URI: http://dobsondev.com/
  * License: GPLv2
@@ -25,6 +25,13 @@
  */
 
 
+/* Enqueue the Style Sheet */
+function dobson_enqueue_scripts() {
+  wp_enqueue_style( 'dobsondev-shortcodes', plugins_url( 'dobsondev-shortcodes.css' , __FILE__ ) );
+}
+add_action( 'wp_enqueue_scripts', 'dobson_enqueue_scripts' );
+
+
 /* Adds a shortcode for displaying PDF's Inline */
 function dobson_embed_PDF($atts) {
   extract(shortcode_atts(array(
@@ -32,12 +39,19 @@ function dobson_embed_PDF($atts) {
     'width' => "100%",
     'height' => "600",
   ), $atts));
+  if ($source == "http://yoursite.com/path-to-the-pdf.pdf") {
+    $source = "Invalid Source";
+  }
+  if ($width == "###" || $height == "###") {
+    $width = "100%";
+    $height = "600";
+  }
   $source_headers = @get_headers($source);
   if (strpos($source_headers[0], '404 Not Found')) {
     return '<p> Invalid PDF source. Please check your PDF source. </p>';
   } else {
     return '<object width="' . $width . '" height="' . $height . '" type="application/pdf" data="'
-    . esc_url( $source ) . '"></object>';
+    . $source . '"></object>';
   }
 }
 add_shortcode('embedPDF', 'dobson_embed_pdf');
@@ -48,11 +62,14 @@ function dobson_create_github_gist($atts) {
   extract(shortcode_atts(array(
     'source' => "Invalid Source",
   ), $atts));
+  if ($source == "http://gist.github.com/your-account/gist-id") {
+    $source = "Invalid Source";
+  }
   $source_headers = @get_headers($source);
   if (strpos($source_headers[0], '404 Not Found')) {
     return '<p> Invalid GitHub Gist source. Please check your source. </p>';
   } else {
-    return '<script src="' . esc_url( $source ) . '.js"></script>';
+    return '<script src="' . $source . '.js"></script>';
   }
 }
 add_shortcode('embedGist', 'dobson_create_github_gist');
@@ -65,6 +82,13 @@ function dobson_embed_twitch($atts) {
     'width' => "620",
     'height' => "378",
   ), $atts));
+  if ($username == "your-username") {
+    $source = "Invalid Username";
+  }
+  if ($width == "###" || $height == "###") {
+    $width = "620";
+    $height = "378";
+  }
   $source_headers = @get_headers("http://twitch.tv/" . $username);
   if (strpos($source_headers[0], '404 Not Found')) {
     return '<p> Invalid Twitch channel name. Please check your username and channel settings on Twitch to make '
@@ -91,6 +115,13 @@ function dobson_embed_twitch_chat($atts) {
     'width' => "350",
     'height' => "500",
   ), $atts));
+  if ($username == "your-username") {
+    $source = "Invalid Username";
+  }
+  if ($width == "###" || $height == "###") {
+    $width = "620";
+    $height = "378";
+  }
   $source_headers = @get_headers("http://twitch.tv/chat/embed?channel=" . $username . "&popout_chat=true");
   if (strpos($source_headers[0], '404 Not Found')) {
     return '<p> Invalid Twitch channel name. Please check your username and channel settings on Twitch to make '
@@ -110,14 +141,59 @@ function dobson_embed_youtube($atts) {
     'width' => "560",
     'height' => "315",
   ), $atts));
+  if ($video == "video-id") {
+    $source = "Invalid Video ID";
+  }
+  if ($width == "###" || $height == "###") {
+    $width = "560";
+    $height = "315";
+  }
   $source_headers = @get_headers("http://youtube.com/watch?v=" . $video);
   if (strpos($source_headers[0], '404 Not Found')) {
     return '<p> Invalid YouTube video ID. Please check your YouTube video ID. </p>';
   } else {
-    return '<iframe width="' . $width . '" height="' . $height . '" src="//www.youtube.com/embed/' . $video
-    . '" frameborder="0" allowfullscreen></iframe>';
+    return '<div class="dobdev_youtube_container">'
+    . '<iframe width="' . $width . '" height="' . $height . '" src="//www.youtube.com/embed/' . $video
+    . '" frameborder="0" allowfullscreen></iframe>'
+    . '</div>';
   }
 }
 add_shortcode('embedYouTube', 'dobson_embed_youtube');
+
+
+/* Adds a shortcode for start tags for displaying inline code */
+function dobson_inline_code_start($atts) {
+  extract(shortcode_atts(array(
+  ), $atts));
+  return '<code class="dobdev_code_inline"><strong>';
+}
+add_shortcode('startCode', 'dobson_inline_code_start');
+
+
+/* Adds a shortcode for end tags for displaying inline code */
+function dobson_inline_code_end($atts) {
+  extract(shortcode_atts(array(
+  ), $atts));
+  return '</strong></code>';
+}
+add_shortcode('endCode', 'dobson_inline_code_end');
+
+
+/* Adds a shortcode for the start tags for displaying a code block */
+function dobson_code_block_start($atts) {
+  extract(shortcode_atts(array(
+  ), $atts));
+  return '<pre class="dobdev_code_block"><code>';
+}
+add_shortcode('startCodeBlock', 'dobson_code_block_start');
+
+
+/* Adds a shortcode for the end tags for displaying a code block */
+function dobson_code_block_end($atts) {
+  extract(shortcode_atts(array(
+  ), $atts));
+  return '</code></pre>';
+}
+add_shortcode('endCodeBlock', 'dobson_code_block_end');
 
 ?>
