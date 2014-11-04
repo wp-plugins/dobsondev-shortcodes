@@ -3,7 +3,7 @@
  * Plugin Name: DobsonDev Shortcodes
  * Plugin URI: http://dobsondev.com/portfolio/dobsondev-shortcodes/
  * Description: A collection of helpful shortcodes.
- * Version: 0.671
+ * Version: 0.672
  * Author: Alex Dobson
  * Author URI: http://dobsondev.com/
  * License: GPLv2
@@ -39,6 +39,13 @@ function dobson_embed_PDF($atts) {
     'width' => "100%",
     'height' => "600",
   ), $atts));
+  if ($source == "http://yoursite.com/path-to-the-pdf.pdf") {
+    $source = "Invalid Source";
+  }
+  if ($width == "###" || $height == "###") {
+    $width = "100%";
+    $height = "600";
+  }
   $source_headers = @get_headers($source);
   if (strpos($source_headers[0], '404 Not Found')) {
     return '<p> Invalid PDF source. Please check your PDF source. </p>';
@@ -55,6 +62,9 @@ function dobson_create_github_gist($atts) {
   extract(shortcode_atts(array(
     'source' => "Invalid Source",
   ), $atts));
+  if ($source == "http://gist.github.com/your-account/gist-id") {
+    $source = "Invalid Source";
+  }
   $source_headers = @get_headers($source);
   if (strpos($source_headers[0], '404 Not Found')) {
     return '<p> Invalid GitHub Gist source. Please check your source. </p>';
@@ -72,6 +82,13 @@ function dobson_embed_twitch($atts) {
     'width' => "620",
     'height' => "378",
   ), $atts));
+  if ($username == "your-username") {
+    $source = "Invalid Username";
+  }
+  if ($width == "###" || $height == "###") {
+    $width = "620";
+    $height = "378";
+  }
   $source_headers = @get_headers("http://twitch.tv/" . $username);
   if (strpos($source_headers[0], '404 Not Found')) {
     return '<p> Invalid Twitch channel name. Please check your username and channel settings on Twitch to make '
@@ -98,6 +115,13 @@ function dobson_embed_twitch_chat($atts) {
     'width' => "350",
     'height' => "500",
   ), $atts));
+  if ($username == "your-username") {
+    $source = "Invalid Username";
+  }
+  if ($width == "###" || $height == "###") {
+    $width = "620";
+    $height = "378";
+  }
   $source_headers = @get_headers("http://twitch.tv/chat/embed?channel=" . $username . "&popout_chat=true");
   if (strpos($source_headers[0], '404 Not Found')) {
     return '<p> Invalid Twitch channel name. Please check your username and channel settings on Twitch to make '
@@ -117,6 +141,13 @@ function dobson_embed_youtube($atts) {
     'width' => "560",
     'height' => "315",
   ), $atts));
+  if ($video == "video-id") {
+    $source = "Invalid Video ID";
+  }
+  if ($width == "###" || $height == "###") {
+    $width = "560";
+    $height = "315";
+  }
   $source_headers = @get_headers("http://youtube.com/watch?v=" . $video);
   if (strpos($source_headers[0], '404 Not Found')) {
     return '<p> Invalid YouTube video ID. Please check your YouTube video ID. </p>';
