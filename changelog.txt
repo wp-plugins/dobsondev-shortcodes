@@ -1,3 +1,14 @@
+= 0.674 =
+
+New Features
+
+* Added shortcodes for displaying user interaction messages
+
+Bug Fixes
+
+* Renamed CSS classes to ensure no clashing happens between this plugin and other style sheets
+* Renamed functions to ensure no clashing happens if you use something else I created (I originally just used my last name to start functions, but switch it to be specific for this plugin)
+
 = 0.673 =
 
 New Features

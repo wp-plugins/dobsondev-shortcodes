@@ -1,22 +1,22 @@
-div.dobdev_youtube_container {
+div.dobdev-youtube-container {
   position: relative;
   padding-bottom: 56.25%;
   padding-top: 30px; height: 0; overflow: hidden;
 }
-div.dobdev_youtube_container iframe,
-div.dobdev_youtube_container object,
-div.dobdev_youtube_container embed {
+div.dobdev-youtube-container iframe,
+div.dobdev-youtube-container object,
+div.dobdev-youtube-container embed {
   position: absolute;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
 }
-code.dobdev_code_inline {
+code.dobdev-code-inline {
   font-family: monospace, monospace;
   font-size: 1em;
 }
-pre.dobdev_code_block {
+pre.dobdev-code-block {
   background: none repeat scroll 0% 0% #111;
   color: #EEE;
   border-radius: 3px 3px 3px 3px;
@@ -25,7 +25,7 @@ pre.dobdev_code_block {
   padding-left: 5px;
   padding-right: 8px;
 }
-a.redDobsonDevShortcodeButton {
+a.dobdev-red-button {
   display: inline-block;
   background: #D11 none no-repeat right top;
   padding: 15px;
@@ -34,11 +34,11 @@ a.redDobsonDevShortcodeButton {
   color: #FFF;
   text-decoration: none;
 }
-a.redDobsonDevShortcodeButton:hover {
+a.dobdev-red-button:hover {
   background: #FFF none no-repeat right top;
   color: #D11;
 }
-a.blueDobsonDevShortcodeButton {
+a.dobdev-blue-button {
   display: inline-block;
   width: auto;
   background: #09F none no-repeat right top;
@@ -48,11 +48,11 @@ a.blueDobsonDevShortcodeButton {
   color: #FFF;
   text-decoration: none;
 }
-a.blueDobsonDevShortcodeButton:hover {
+a.dobdev-blue-button:hover {
   background: #FFF none no-repeat right top;
   color: #09F;
 }
-a.greenDobsonDevShortcodeButton {
+a.dobdev-green-button {
   display: inline-block;
   background: #090 none no-repeat right top;
   padding: 15px;
@@ -61,11 +61,11 @@ a.greenDobsonDevShortcodeButton {
   color: #FFF;
   text-decoration: none;
 }
-a.greenDobsonDevShortcodeButton:hover {
+a.dobdev-green-button:hover {
   background: #FFF none no-repeat right top;
   color: #090;
 }
-a.orangeDobsonDevShortcodeButton {
+a.dobdev-orange-button {
   display: inline-block;
   background: #F70 none no-repeat right top;
   padding: 15px;
@@ -74,11 +74,11 @@ a.orangeDobsonDevShortcodeButton {
   color: #FFF;
   text-decoration: none;
 }
-a.orangeDobsonDevShortcodeButton:hover {
+a.dobdev-orange-button:hover {
   background: #FFF none no-repeat right top;
   color: #F70;
 }
-a.purpleDobsonDevShortcodeButton {
+a.dobdev-purple-button {
   display: inline-block;
   background: #909 none no-repeat right top;
   padding: 15px;
@@ -87,11 +87,11 @@ a.purpleDobsonDevShortcodeButton {
   color: #FFF;
   text-decoration: none;
 }
-a.purpleDobsonDevShortcodeButton:hover {
+a.dobdev-purple-button:hover {
   background: #FFF none no-repeat right top;
   color: #909;
 }
-a.turquoiseDobsonDevShortcodeButton {
+a.dobdev-turquoise-button {
   display: inline-block;
   background: #099 none no-repeat right top;
   padding: 15px;
@@ -100,7 +100,31 @@ a.turquoiseDobsonDevShortcodeButton {
   color: #FFF;
   text-decoration: none;
 }
-a.turquoiseDobsonDevShortcodeButton:hover {
+a.dobdev-turquoise-button:hover {
   background: #FFF none no-repeat right top;
   color: #099;
+}
+div.dobdev-info-msg,
+div.dobdev-success-msg,
+div.dobdev-warning-msg,
+div.dobdev-error-msg {
+  margin: 10px 0;
+  padding: 10px;
+  border-radius: 3px 3px 3px 3px;
+}
+div.dobdev-info-msg {
+  color: #059;
+  background-color: #BEF;
+}
+div.dobdev-success-msg {
+  color: #270;
+  background-color: #DFF2BF;
+}
+div.dobdev-warning-msg {
+  color: #9F6000;
+  background-color: #FEEFB3;
+}
+div.dobdev-error-msg {
+  color: #D8000C;
+  background-color: #FFBABA;
 }

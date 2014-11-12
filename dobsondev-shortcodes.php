@@ -3,7 +3,7 @@
  * Plugin Name: DobsonDev Shortcodes
  * Plugin URI: http://dobsondev.com/portfolio/dobsondev-shortcodes/
  * Description: A collection of helpful shortcodes.
- * Version: 0.673
+ * Version: 0.674
  * Author: Alex Dobson
  * Author URI: http://dobsondev.com/
  * License: GPLv2
@@ -26,14 +26,15 @@
 
 
 /* Enqueue the Style Sheet */
-function dobson_enqueue_scripts() {
+function dobsondev_shrtcode_enqueue_scripts() {
   wp_enqueue_style( 'dobsondev-shortcodes', plugins_url( 'dobsondev-shortcodes.css' , __FILE__ ) );
+  wp_enqueue_style( 'font-awesome', '//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css' );
 }
-add_action( 'wp_enqueue_scripts', 'dobson_enqueue_scripts' );
+add_action( 'wp_enqueue_scripts', 'dobsondev_shrtcode_enqueue_scripts' );
 
 
 /* Adds a shortcode for displaying PDF's Inline */
-function dobson_embed_PDF($atts) {
+function dobsondev_shrtcode_embed_PDF($atts) {
   extract(shortcode_atts(array(
     'source' => "Invalid Source",
     'width' => "100%",
@@ -54,11 +55,11 @@ function dobson_embed_PDF($atts) {
     . $source . '"></object>';
   }
 }
-add_shortcode('embedPDF', 'dobson_embed_pdf');
+add_shortcode('embedPDF', 'dobsondev_shrtcode_embed_PDF');
 
 
 /* Adds a shortcode for displaying GitHub Gists */
-function dobson_create_github_gist($atts) {
+function dobsondev_shrtcode_create_github_gist($atts) {
   extract(shortcode_atts(array(
     'source' => "Invalid Source",
   ), $atts));
@@ -72,11 +73,11 @@ function dobson_create_github_gist($atts) {
     return '<script src="' . $source . '.js"></script>';
   }
 }
-add_shortcode('embedGist', 'dobson_create_github_gist');
+add_shortcode('embedGist', 'dobsondev_shrtcode_create_github_gist');
 
 
 /* Adds a shortcode to embed a Twitch Stream */
-function dobson_embed_twitch($atts) {
+function dobsondev_shrtcode_embed_twitch($atts) {
   extract(shortcode_atts(array(
     'username' => "Invalid Username",
     'width' => "620",
@@ -105,11 +106,11 @@ function dobson_embed_twitch($atts) {
     </object>';
   }
 }
-add_shortcode('embedTwitch', 'dobson_embed_twitch');
+add_shortcode('embedTwitch', 'dobsondev_shrtcode_embed_twitch');
 
 
 /* Adds a shortcode to embed a Twitch Stream's chat */
-function dobson_embed_twitch_chat($atts) {
+function dobsondev_shrtcode_embed_twitch_chat($atts) {
   extract(shortcode_atts(array(
     'username' => "Invalid Username",
     'width' => "350",
@@ -131,11 +132,11 @@ function dobson_embed_twitch_chat($atts) {
     . $username . '&popout_chat=true" height="' . $height . '" width="' . $width . '"></iframe>';
   }
 }
-add_shortcode('embedTwitchChat', 'dobson_embed_twitch_chat');
+add_shortcode('embedTwitchChat', 'dobsondev_shrtcode_embed_twitch_chat');
 
 
 /* Adds a shortcode to embed a YouTube video */
-function dobson_embed_youtube($atts) {
+function dobsondev_shrtcode_embed_youtube($atts) {
   extract(shortcode_atts(array(
     'video' => "Invalid Video ID",
     'width' => "560",
@@ -152,53 +153,53 @@ function dobson_embed_youtube($atts) {
   if (strpos($source_headers[0], '404 Not Found')) {
     return '<p> Invalid YouTube video ID. Please check your YouTube video ID. </p>';
   } else {
-    return '<div class="dobdev_youtube_container">'
+    return '<div class="dobdev-youtube-container">'
     . '<iframe width="' . $width . '" height="' . $height . '" src="//www.youtube.com/embed/' . $video
     . '" frameborder="0" allowfullscreen></iframe>'
     . '</div>';
   }
 }
-add_shortcode('embedYouTube', 'dobson_embed_youtube');
+add_shortcode('embedYouTube', 'dobsondev_shrtcode_embed_youtube');
 
 
 /* Adds a shortcode for start tags for displaying inline code */
-function dobson_inline_code_start($atts) {
+function dobsondev_shrtcode_inline_code_start($atts) {
   extract(shortcode_atts(array(
   ), $atts));
-  return '<code class="dobdev_code_inline"><strong>';
+  return '<code class="dobdev-code-inline"><strong>';
 }
-add_shortcode('startCode', 'dobson_inline_code_start');
+add_shortcode('startCode', 'dobsondev_shrtcode_inline_code_start');
 
 
 /* Adds a shortcode for end tags for displaying inline code */
-function dobson_inline_code_end($atts) {
+function dobsondev_shrtcode_inline_code_end($atts) {
   extract(shortcode_atts(array(
   ), $atts));
   return '</strong></code>';
 }
-add_shortcode('endCode', 'dobson_inline_code_end');
+add_shortcode('endCode', 'dobsondev_shrtcode_inline_code_end');
 
 
 /* Adds a shortcode for the start tags for displaying a code block */
-function dobson_code_block_start($atts) {
+function dobsondev_shrtcode_code_block_start($atts) {
   extract(shortcode_atts(array(
   ), $atts));
-  return '<pre class="dobdev_code_block"><code>';
+  return '<pre class="dobdev-code-block"><code>';
 }
-add_shortcode('startCodeBlock', 'dobson_code_block_start');
+add_shortcode('startCodeBlock', 'dobsondev_shrtcode_code_block_start');
 
 
 /* Adds a shortcode for the end tags for displaying a code block */
-function dobson_code_block_end($atts) {
+function dobsondev_shrtcode_code_block_end($atts) {
   extract(shortcode_atts(array(
   ), $atts));
   return '</code></pre>';
 }
-add_shortcode('endCodeBlock', 'dobson_code_block_end');
+add_shortcode('endCodeBlock', 'dobsondev_shrtcode_code_block_end');
 
 
 /* Adds a shortcode for displaying a simple CSS only button */
-function dobson_shortcode_button($atts) {
+function dobsondev_shrtcode_make_button($atts) {
   extract(shortcode_atts(array(
     'text' => "Button",
     'color' => "red",
@@ -207,8 +208,60 @@ function dobson_shortcode_button($atts) {
   if ($color == "color") {
     $color = "red";
   }
-  return '<a class="' . $color . 'DobsonDevShortcodeButton" href="' . $link . '">' . $text . '</a>';
+  return '<a class="dobdev-' . $color . '-button" href="' . $link . '">' . $text . '</a>';
 }
-add_shortcode('button', 'dobson_shortcode_button')
+add_shortcode('button', 'dobsondev_shrtcode_make_button');
+
+
+/* */
+function dobsondev_shrtcode_info_message($atts) {
+  extract(shortcode_atts(array(
+    'text' => "This is an info message.",
+  ), $atts));
+  if ($text == "text") {
+    $text = "This is an info message.";
+  }
+  return '<div class="dobdev-info-msg"><i class="fa fa-info-circle"></i> ' . $text . '</div>';
+}
+add_shortcode('infoMessage', 'dobsondev_shrtcode_info_message');
+
+
+/* */
+function dobsondev_shrtcode_success_message($atts) {
+  extract(shortcode_atts(array(
+    'text' => "This is an success message.",
+  ), $atts));
+  if ($text == "text") {
+    $text = "This is an success message.";
+  }
+  return '<div class="dobdev-success-msg"><i class="fa fa-check"></i> ' . $text . '</div>';
+}
+add_shortcode('successMessage', 'dobsondev_shrtcode_success_message');
+
+
+/* */
+function dobsondev_shrtcode_warning_message($atts) {
+  extract(shortcode_atts(array(
+    'text' => "This is an warning message.",
+  ), $atts));
+  if ($text == "text") {
+    $text = "This is an warning message.";
+  }
+  return '<div class="dobdev-warning-msg"><i class="fa fa-warning"></i> ' . $text . '</div>';
+}
+add_shortcode('warningMessage', 'dobsondev_shrtcode_warning_message');
+
+
+/* */
+function dobsondev_shrtcode_error_message($atts) {
+  extract(shortcode_atts(array(
+    'text' => "This is an error message.",
+  ), $atts));
+  if ($text == "text") {
+    $text = "This is an error message.";
+  }
+  return '<div class="dobdev-error-msg"><i class="fa fa-times-circle"></i> ' . $text . '</div>';
+}
+add_shortcode('errorMessage', 'dobsondev_shrtcode_error_message');
 
 ?>
