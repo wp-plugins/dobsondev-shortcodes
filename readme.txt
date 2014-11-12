@@ -3,10 +3,10 @@ Contributors: DobsonDev
 Donate link: https://dobsondev.com/donate/
 License: GPLv2
 License URI: http://www.gnu.org/licenses/gpl.html
-Tags: dobsondev, shortcodes, pdf, portable document format, github gists, github, gists, twitch streams, twitch, YouTube video, YouTube
+Tags: dobsondev, shortcodes, pdf, portable document format, github gists, github, gists, twitch streams, twitch, twitch tv, twitch chat, YouTube video, YouTube, inline code, code snippets, code block, programming, code examples, button, buttons, css button, css buttons, button shortcode, buttons shortcodes
 Requires at least: 2.5
-Tested up to: 3.8.1
-Stable tag: 0.668
+Tested up to: 4.0
+Stable tag: 0.673
 
 Add a collection of helpful shortcodes to your site.
 
@@ -21,6 +21,9 @@ A collection of helpful shortcodes that I use in my own work that I wanted to sh
 * Embed [Twitch Stream](http://twitch.tv/) - Embeds a Twitch Stream into the page.
 * Embed [Twitch Stream](http://twitch.tv/) Chat - Embeds the chat from a Twitch Stream into the page.
 * Embed [YouTube Video](http://youtube.com/) - Embeds a YouTube Video into the page.
+* Inline Code - Displays inline code snippets that are visually different than the body text.
+* Code Block - Displays a simple code block for simple, small pieces of code.
+* Button - Displays a purely CSS button with choice of color, text and link.
 
 **Embed PDF**
 
@@ -48,9 +51,35 @@ This Shortcode will embed a Twitch stream's chat into the page. The username att
 
 **Embed YouTube Video**
 
-[embedYouTube video="video-id" width="###" height="###"\]
+[embedYouTube video="video-id" width="###" height="###"]
 
 This Shortcode will embed a YouTube video into the page. The video attribute is the YouTube video ID of the video you want to embed into the page. It can be found at the end of the URL on YouTube. For example, the video located at [https://www.youtube.com/watch?v=uCdfze1etec](https://www.youtube.com/watch?v=uCdfze1etec) has the video ID "uCdfze1etec". You will always find the video ID after the "watch?v=". The video attribute is required. The width and height attributes will set the size of the embedded video, and both are optional attributes. If they are not entered the width will default to 560 and the height will default to 315.
+
+**Inline Code Snippets**
+
+[startCode]
+
+This shortcode will create the start tags for an inline code snippet which will then be ended using the [endCode] shortcode. If you use these two together you can create small inline code samples that look great, are easy to copy, and distinguish themselves from the rest of your text content in appearance. These make it easy to include code snippets without having to switch to the HTML editor in WordPress.
+
+[endCode]
+
+This shortcode will create the end tags for the inline code snippet started by [startCode]. If you use these two together you can create small inline code samples that look great, are esay to copy, and distinguish themselves from the rest of your text content in appearance. These make it easy to include code snippets without having to switch to the HTML editor in WordPress.
+
+**Code Blocks**
+
+[startCodeBlock]
+
+This shortcode will create the start tags for a code block which will then be ended using the [endCodeBlock] shortcode. If you use these two together you can create small, simple code blocks that have a black background with white text, which is the common convention for code blocks. This is great for showing Terminal commands or very small code snippets (I recommend using the embed GitHub Gists shortcode for longer code samples).
+
+[endCodeBlock]
+
+This shortcode will create the end tags for the code snippet started by [startCode]. If you use these two together you can create small, simple code blocks that have a black background with white text, which is the common convention. This is great for showing Terminal commands or very small code snippets (I recommend using the embed GitHub Gists shortcode for longer code samples).
+
+** Buttons **
+
+[button text="buttonText" color="color" link="#"]
+
+This shortcode will create a purely CSS button where ever you place it. The text attribute is the text that will appear within the button. The color atrribute defines what color will show - the choices for color are red, blue, green, orange, purple, and turquoise. The link attribute is what link the user wants to redirect to when the button is clicked. If you do not want a redirect on the button click, just use a "#" and the button will do nothing when clicked.
 
 == Installation ==
 
@@ -67,11 +96,56 @@ If you have any shortcodes you want to suggest or to add to the plugin, please c
 
 == Changelog ==
 
+= - 0.673 - =
+
+**New Features**
+
+* Added a shortcode for displaying CSS buttons
+
+= - 0.672 - =
+
+**Bug Fixes**
+
+* Fixed a bug that would cause the PDF shortcode to redirect to www.ww.38.yoursite.com/path-to-the-pdf.pdf if the shortcode was copied as [embedPDF source="http://yoursite.com/path-to-the-pdf.pdf" width="###" height="###"]
+* Fixed the same possibly bug mentioned above with the GitHub Gists, Twitch Stream, Twitch Chat and YouTube Video embeds
+
+= - 0.671 - =
+
+**New Features**
+
+* Tested up to WordPress 4.0
+* Added a shortcode for displaying simple code blocks
+
+**Bug Fixes**
+
+* Renamed 'youtube-container' CSS class to 'dobdev_youtube_container' in order to ensure uniqueness
+* Added default CSS for the embedded inline code
+
+= - 0.670 - =
+
+**New Features**
+
+* Added shortcodes for inline code snippets
+
+= - 0.669 - =
+
+**New Features**
+
+* Added a Stylesheet for the plugin
+
+**Bug Fixes**
+
+* Made the embedded YouTube videos responsive
+
 = - 0.668 - =
 
 **New Features**
 
 * Added a Shortcode for embedding Twitch.tv stream chats on your site
+
+**Bug Fixes**
+
+* Added esc_url() to all URL sources for shortcodes
 
 = - 0.667 - =
 
