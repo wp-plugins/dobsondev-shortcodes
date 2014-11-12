@@ -3,10 +3,10 @@ Contributors: DobsonDev
 Donate link: https://dobsondev.com/donate/
 License: GPLv2
 License URI: http://www.gnu.org/licenses/gpl.html
-Tags: dobsondev, shortcodes, pdf, portable document format, github gists, github, gists, twitch streams, twitch, twitch tv, twitch chat, YouTube video, YouTube, inline code, code snippets, code block, programming, code examples
+Tags: dobsondev, shortcodes, pdf, portable document format, github gists, github, gists, twitch streams, twitch, twitch tv, twitch chat, YouTube video, YouTube, inline code, code snippets, code block, programming, code examples, button, buttons, css button, css buttons, button shortcode, buttons shortcodes
 Requires at least: 2.5
 Tested up to: 4.0
-Stable tag: 0.672
+Stable tag: 0.673
 
 Add a collection of helpful shortcodes to your site.
 
@@ -23,6 +23,7 @@ A collection of helpful shortcodes that I use in my own work that I wanted to sh
 * Embed [YouTube Video](http://youtube.com/) - Embeds a YouTube Video into the page.
 * Inline Code - Displays inline code snippets that are visually different than the body text.
 * Code Block - Displays a simple code block for simple, small pieces of code.
+* Button - Displays a purely CSS button with choice of color, text and link.
 
 **Embed PDF**
 
@@ -50,7 +51,7 @@ This Shortcode will embed a Twitch stream's chat into the page. The username att
 
 **Embed YouTube Video**
 
-[embedYouTube video="video-id" width="###" height="###"\]
+[embedYouTube video="video-id" width="###" height="###"]
 
 This Shortcode will embed a YouTube video into the page. The video attribute is the YouTube video ID of the video you want to embed into the page. It can be found at the end of the URL on YouTube. For example, the video located at [https://www.youtube.com/watch?v=uCdfze1etec](https://www.youtube.com/watch?v=uCdfze1etec) has the video ID "uCdfze1etec". You will always find the video ID after the "watch?v=". The video attribute is required. The width and height attributes will set the size of the embedded video, and both are optional attributes. If they are not entered the width will default to 560 and the height will default to 315.
 
@@ -74,6 +75,12 @@ This shortcode will create the start tags for a code block which will then be en
 
 This shortcode will create the end tags for the code snippet started by [startCode]. If you use these two together you can create small, simple code blocks that have a black background with white text, which is the common convention. This is great for showing Terminal commands or very small code snippets (I recommend using the embed GitHub Gists shortcode for longer code samples).
 
+** Buttons **
+
+[button text="buttonText" color="color" link="#"]
+
+This shortcode will create a purely CSS button where ever you place it. The text attribute is the text that will appear within the button. The color atrribute defines what color will show - the choices for color are red, blue, green, orange, purple, and turquoise. The link attribute is what link the user wants to redirect to when the button is clicked. If you do not want a redirect on the button click, just use a "#" and the button will do nothing when clicked.
+
 == Installation ==
 
 1. Upload the entire dobsondev-shortcodes folder to the /wp-content/plugins/ directory.
@@ -88,6 +95,12 @@ For more information about the shortcodes avaliable through the plugin please vi
 If you have any shortcodes you want to suggest or to add to the plugin, please contact me at [alex@dobsondev.com](mailto:alex@dobsondev.com).
 
 == Changelog ==
+
+= - 0.673 - =
+
+**New Features**
+
+* Added a shortcode for displaying CSS buttons
 
 = - 0.672 - =
 

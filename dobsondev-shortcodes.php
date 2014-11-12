@@ -3,7 +3,7 @@
  * Plugin Name: DobsonDev Shortcodes
  * Plugin URI: http://dobsondev.com/portfolio/dobsondev-shortcodes/
  * Description: A collection of helpful shortcodes.
- * Version: 0.672
+ * Version: 0.673
  * Author: Alex Dobson
  * Author URI: http://dobsondev.com/
  * License: GPLv2
@@ -195,5 +195,20 @@ function dobson_code_block_end($atts) {
   return '</code></pre>';
 }
 add_shortcode('endCodeBlock', 'dobson_code_block_end');
+
+
+/* Adds a shortcode for displaying a simple CSS only button */
+function dobson_shortcode_button($atts) {
+  extract(shortcode_atts(array(
+    'text' => "Button",
+    'color' => "red",
+    'link' => "#",
+  ), $atts));
+  if ($color == "color") {
+    $color = "red";
+  }
+  return '<a class="' . $color . 'DobsonDevShortcodeButton" href="' . $link . '">' . $text . '</a>';
+}
+add_shortcode('button', 'dobson_shortcode_button')
 
 ?>

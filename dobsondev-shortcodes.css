@@ -25,3 +25,82 @@ pre.dobdev_code_block {
   padding-left: 5px;
   padding-right: 8px;
 }
+a.redDobsonDevShortcodeButton {
+  display: inline-block;
+  background: #D11 none no-repeat right top;
+  padding: 15px;
+  border-radius: 5px;
+  border: 5px solid #D11;
+  color: #FFF;
+  text-decoration: none;
+}
+a.redDobsonDevShortcodeButton:hover {
+  background: #FFF none no-repeat right top;
+  color: #D11;
+}
+a.blueDobsonDevShortcodeButton {
+  display: inline-block;
+  width: auto;
+  background: #09F none no-repeat right top;
+  padding: 15px;
+  border-radius: 5px;
+  border: 5px solid #09F;
+  color: #FFF;
+  text-decoration: none;
+}
+a.blueDobsonDevShortcodeButton:hover {
+  background: #FFF none no-repeat right top;
+  color: #09F;
+}
+a.greenDobsonDevShortcodeButton {
+  display: inline-block;
+  background: #090 none no-repeat right top;
+  padding: 15px;
+  border-radius: 5px;
+  border: 5px solid #090;
+  color: #FFF;
+  text-decoration: none;
+}
+a.greenDobsonDevShortcodeButton:hover {
+  background: #FFF none no-repeat right top;
+  color: #090;
+}
+a.orangeDobsonDevShortcodeButton {
+  display: inline-block;
+  background: #F70 none no-repeat right top;
+  padding: 15px;
+  border-radius: 5px;
+  border: 5px solid #F70;
+  color: #FFF;
+  text-decoration: none;
+}
+a.orangeDobsonDevShortcodeButton:hover {
+  background: #FFF none no-repeat right top;
+  color: #F70;
+}
+a.purpleDobsonDevShortcodeButton {
+  display: inline-block;
+  background: #909 none no-repeat right top;
+  padding: 15px;
+  border-radius: 5px;
+  border: 5px solid #909;
+  color: #FFF;
+  text-decoration: none;
+}
+a.purpleDobsonDevShortcodeButton:hover {
+  background: #FFF none no-repeat right top;
+  color: #909;
+}
+a.turquoiseDobsonDevShortcodeButton {
+  display: inline-block;
+  background: #099 none no-repeat right top;
+  padding: 15px;
+  border-radius: 5px;
+  border: 5px solid #099;
+  color: #FFF;
+  text-decoration: none;
+}
+a.turquoiseDobsonDevShortcodeButton:hover {
+  background: #FFF none no-repeat right top;
+  color: #099;
+}

@@ -1,3 +1,9 @@
+= 0.673 =
+
+New Features
+
+* Added a shortcode for displaying CSS buttons
+
 = 0.672 =
 
 Bug Fixes
