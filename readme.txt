@@ -3,10 +3,10 @@ Contributors: DobsonDev
 Donate link: https://dobsondev.com/donate/
 License: GPLv2
 License URI: http://www.gnu.org/licenses/gpl.html
-Tags: dobsondev, shortcodes, pdf, portable document format, github gists, github, gists, twitch streams, twitch, twitch tv, twitch chat, YouTube video, YouTube, inline code, code snippets, code block, programming, code examples, button, buttons, css button, css buttons, button shortcode, buttons shortcodes, user interaction, user interaction messages, info message, information message, success message, warning message, error message
+Tags: dobsondev, shortcodes, pdf, portable document format, github gists, github, gists, twitch streams, twitch, twitch tv, twitch chat, YouTube video, YouTube, inline code, code snippets, code block, programming, code examples, button, buttons, css button, css buttons, button shortcode, buttons shortcodes, user interaction, user interaction messages, info message, information message, success message, warning message, error message, related posts, related posts shortcode, jquery, slideshow
 Requires at least: 2.5
-Tested up to: 4.0
-Stable tag: 0.674
+Tested up to: 4.0.1
+Stable tag: 1.0
 
 Add a collection of helpful shortcodes to your site.
 
@@ -25,6 +25,7 @@ A collection of helpful shortcodes that I use in my own work that I wanted to sh
 * Code Block - Displays a simple code block for simple, small pieces of code.
 * Button - Displays a purely CSS button with choice of color, text and link.
 * User Interaction Messages - Displays a message with appropriate color that you can use to notify users of how their interaction is working.
+* Related Posts - Displays manually entered related posts on your page that cycle through in a little slideshow.
 
 **Embed PDF**
 
@@ -91,6 +92,13 @@ This shortcode will create a purely CSS button where ever you place it. The text
 
 These shortcodes will display a message with an appropriate color that will notify users of how their interaction is working. The color scheme follows that of many other websites - blue is for information, green is for success, yellow is a warning and red signifies an error.
 
+**Related Posts**
+
+[relatedPosts posts="1stPostID; 2ndPostID; 3rdPostID"]
+eg. [relatedPost post="1; 2; 3; 4"]
+
+This shortcode will create a small slideshow of related posts wherever you put it. Note that you must enter the post ID's yourself, as this shortcode will not automatically index and display related posts for you. Although this is more work it has a significantly smaller load time than plugins which do automatically index them for you. I would recommend this to people who run their own personal blogs with fewer articles. The slideshow is made using only CSS and jQuery.
+
 == Installation ==
 
 1. Upload the entire dobsondev-shortcodes folder to the /wp-content/plugins/ directory.
@@ -105,6 +113,13 @@ For more information about the shortcodes avaliable through the plugin please vi
 If you have any shortcodes you want to suggest or to add to the plugin, please contact me at [alex@dobsondev.com](mailto:alex@dobsondev.com).
 
 == Changelog ==
+
+= - 1.0 - =
+
+**New Features**
+
+* Full 1.0 Release - I feel there is enough content now to justify it
+* Added shortcode for displaying a related posts slideshow
 
 = - 0.674 - =
 

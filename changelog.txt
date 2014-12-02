@@ -1,3 +1,10 @@
+= 1.0 =
+
+New Features
+
+* Full 1.0 Release - I feel there is enough content now to justify it
+* Added shortcode for displaying a related posts slideshow
+
 = 0.674 =
 
 New Features

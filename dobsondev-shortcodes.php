@@ -3,7 +3,7 @@
  * Plugin Name: DobsonDev Shortcodes
  * Plugin URI: http://dobsondev.com/portfolio/dobsondev-shortcodes/
  * Description: A collection of helpful shortcodes.
- * Version: 0.674
+ * Version: 1.0
  * Author: Alex Dobson
  * Author URI: http://dobsondev.com/
  * License: GPLv2
@@ -29,6 +29,7 @@
 function dobsondev_shrtcode_enqueue_scripts() {
   wp_enqueue_style( 'dobsondev-shortcodes', plugins_url( 'dobsondev-shortcodes.css' , __FILE__ ) );
   wp_enqueue_style( 'font-awesome', '//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css' );
+  wp_enqueue_script( 'dobsondev-shortcodes-js', plugins_url( 'dobsondev-shortcodes.js', __FILE__ ), array( 'jquery' ) );
 }
 add_action( 'wp_enqueue_scripts', 'dobsondev_shrtcode_enqueue_scripts' );
 
@@ -213,7 +214,7 @@ function dobsondev_shrtcode_make_button($atts) {
 add_shortcode('button', 'dobsondev_shrtcode_make_button');
 
 
-/* */
+/* Adds a shortcode for displaying a simple user interaction info message */
 function dobsondev_shrtcode_info_message($atts) {
   extract(shortcode_atts(array(
     'text' => "This is an info message.",
@@ -226,7 +227,7 @@ function dobsondev_shrtcode_info_message($atts) {
 add_shortcode('infoMessage', 'dobsondev_shrtcode_info_message');
 
 
-/* */
+/* Adds a shortcode for displaying a simple user interaction success message */
 function dobsondev_shrtcode_success_message($atts) {
   extract(shortcode_atts(array(
     'text' => "This is an success message.",
@@ -239,7 +240,7 @@ function dobsondev_shrtcode_success_message($atts) {
 add_shortcode('successMessage', 'dobsondev_shrtcode_success_message');
 
 
-/* */
+/* Adds a shortcode for displaying a simple user interaction warning message */
 function dobsondev_shrtcode_warning_message($atts) {
   extract(shortcode_atts(array(
     'text' => "This is an warning message.",
@@ -252,7 +253,7 @@ function dobsondev_shrtcode_warning_message($atts) {
 add_shortcode('warningMessage', 'dobsondev_shrtcode_warning_message');
 
 
-/* */
+/* Adds a shortcode for displaying a simple user interaction error message */
 function dobsondev_shrtcode_error_message($atts) {
   extract(shortcode_atts(array(
     'text' => "This is an error message.",
@@ -263,5 +264,34 @@ function dobsondev_shrtcode_error_message($atts) {
   return '<div class="dobdev-error-msg"><i class="fa fa-times-circle"></i> ' . $text . '</div>';
 }
 add_shortcode('errorMessage', 'dobsondev_shrtcode_error_message');
+
+
+/* Adds a shortcode for displaying related posts based on their id */
+function dobsondev_shrtcode_related_posts($atts) {
+  extract(shortcode_atts(array(
+    'posts' => "",
+  ), $atts));
+  if ($posts == "post-slug") {
+    $posts = "";
+  }
+  // Turn the passed in post IDs into an array and remove whitespace
+  $posts_arr = array_map( 'trim', explode( ';', $posts ) );
+  $output = '<div class="dobdev-related-posts">';
+  $output .= '<h2> Related Posts </h2>';
+  $output .= '<hr />';
+  $count = 1;
+  foreach ( $posts_arr as $post_id ) {
+    $output .= '<div class="dobdev-related-posts-post" id="' . $count . '">';
+    $output .= '<a href="' . get_permalink( $post_id ) . '">' . get_the_post_thumbnail( $post_id, array( 130, 130 ), array( 'class' => 'alignleft dobdev-related-posts-thumbnail' ) ) . '</a>';
+    $output .= '<h4 class="dobdev-related-posts-title">' . get_post_field( 'post_title', $post_id ) . '</h4>';
+    $output .= '<p class="dobdev-related-posts-excerpt">' . get_the_excerpt( $post_id ) . '</p>';
+    $output .= '</div><!-- END .dobdev-related-posts-post -->';
+    $count ++;
+  }
+  $output .= '</div><!-- END .dobdev-related-posts -->';
+
+  return $output;
+}
+add_shortcode('relatedPosts', 'dobsondev_shrtcode_related_posts');
 
 ?>
