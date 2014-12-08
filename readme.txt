@@ -3,10 +3,10 @@ Contributors: DobsonDev
 Donate link: https://dobsondev.com/donate/
 License: GPLv2
 License URI: http://www.gnu.org/licenses/gpl.html
-Tags: dobsondev, shortcodes, pdf, portable document format, github gists, github, gists, twitch streams, twitch, twitch tv, twitch chat, YouTube video, YouTube, inline code, code snippets, code block, programming, code examples, button, buttons, css button, css buttons, button shortcode, buttons shortcodes, user interaction, user interaction messages, info message, information message, success message, warning message, error message, related posts, related posts shortcode, jquery, slideshow
+Tags: dobsondev, shortcodes, pdf, portable document format, github gists, github, gists, twitch streams, twitch, twitch tv, twitch chat, YouTube video, YouTube, inline code, code snippets, code block, programming, code examples, button, buttons, css button, css buttons, button shortcode, buttons shortcodes, user interaction, user interaction messages, info message, information message, success message, warning message, error message, related posts, related posts shortcode, jquery, jquery related posts, related posts slideshow
 Requires at least: 2.5
 Tested up to: 4.0.1
-Stable tag: 1.0
+Stable tag: 1.0.1
 
 Add a collection of helpful shortcodes to your site.
 
@@ -33,17 +33,23 @@ A collection of helpful shortcodes that I use in my own work that I wanted to sh
 
 This Shortcode will embed a PDF into the page rather than making it a seperate link that must be clicked to be viewed. It is displayed in the browsers default PDF reader since it is embedded as an application. The source attribute is the URL of the PDF and is required. The width and height attribute will set the size of the embedded application, and are both optional. If they are not entered then the width is set to 100% and the height to 600.
 
+Please note that setting the width to "auto" will not work. Rather, please set the width to "100%" to get the same effect. If you are looking to add your own custom CSS to the container around the PDF embed, the class is "div.dobdev-pdf-container". This should only be done by someone experienced using CSS, otherwise the results could cause harm to the layout of your site.
+
 **Embed GitHub Gists**
 
 [embedGist source="http://gist.github.com/your-account/gist-id"]
 
 This Shortcode will embed a GitHub Gist into the page. The Gist will be embedded in a little box that makes it easy to share code samples with other developers (or whoever you want to share them with). The source attribute is the URL to the Gist and is required.
 
+If you are looking to add some custom CSS to the Gists, they are automatically put into "div.gist" by GitHub. Use that class when doing any CSS changes. This should only be done by someone experienced using CSS, otherwise the results could cause harm to the layout of your site.
+
 **Embed Twitch Stream**
 
 [embedTwitch username="your-username" width="###" height="###"]
 
-This Shortcode will embed a Twitch stream into the page. The username attribute is the Twitch Stream's username, which can be found at the end of the URL of the stream. An example would be [http://twitch.tv/day9tv](http://twitch.tv/day9tv). The username for this stream is "day9tv", so that would be entered. The username is a required attribute. The width and height attributes will set the size of the embedded stream, and both are optional attributes. If they are not entered the width will default to 620 and the height will default to 378.
+This Shortcode will embed a Twitch stream into the page. The username attribute is the Twitch Stream's username, which can be found at the end of the URL of the stream. An example would be [http://twitch.tv/day9tv](http://twitch.tv/day9tv). The username for this stream is "day9tv", so that would be entered. The username is a required attribute. The width and height attributes will set the size of the embedded stream, and both are optional attributes. If they are not entered the width will default to 100% and the height will default to 378.
+
+Please note that setting the width to "auto" will not work. Rather, please set the width to "100%" to get the same effect. If you are looking to add your own custom CSS to the container around the Twitch Stream embed, the class is "div.dobdev-twitch-container". This should only be done by someone experienced using CSS, otherwise the results could cause harm to the layout of your site.
 
 **Embed Twitch Stream Chat**
 
@@ -51,11 +57,15 @@ This Shortcode will embed a Twitch stream into the page. The username attribute 
 
 This Shortcode will embed a Twitch stream's chat into the page. The username attribute is the Twitch Stream's username, which can be found at the end of the URL of the stream. An example would be [http://twitch.tv/day9tv](http://twitch.tv/day9tv). The username for this stream is "day9tv", so that would be entered. The username is a required attribute. The width and height attributes will set the size of the embedded chat, and both are optional attributes. If they are not entered the width will default to 350 and the height will default to 500.
 
+If you are looking to add your own custom CSS to the container around the Twitch Chat embed, the class is "div.dobdev-twitch-chat-container". This should only be done by someone experienced using CSS, otherwise the results could cause harm to the layout of your site.
+
 **Embed YouTube Video**
 
 [embedYouTube video="video-id" width="###" height="###"]
 
 This Shortcode will embed a YouTube video into the page. The video attribute is the YouTube video ID of the video you want to embed into the page. It can be found at the end of the URL on YouTube. For example, the video located at [https://www.youtube.com/watch?v=uCdfze1etec](https://www.youtube.com/watch?v=uCdfze1etec) has the video ID "uCdfze1etec". You will always find the video ID after the "watch?v=". The video attribute is required. The width and height attributes will set the size of the embedded video, and both are optional attributes. If they are not entered the width will default to 560 and the height will default to 315.
+
+Please note that setting the width to "auto" will not work. Rather, please set the width to "100%" to get the same effect. If you are looking to add your own custom CSS to the container around the Twitch Stream embed, the class is "div.dobdev-youtube-container". This should only be done by someone experienced using CSS, otherwise the results could cause harm to the layout of your site.
 
 **Inline Code Snippets**
 
@@ -67,6 +77,8 @@ This shortcode will create the start tags for an inline code snippet which will 
 
 This shortcode will create the end tags for the inline code snippet started by [startCode]. If you use these two together you can create small inline code samples that look great, are esay to copy, and distinguish themselves from the rest of your text content in appearance. These make it easy to include code snippets without having to switch to the HTML editor in WordPress.
 
+If you want to change any of the styling for the inline code snippets, please use the CSS class "code.dobdev-code-inline". From here you can change font size, font family, and even colour using your theme's (hopefully child theme's) stylesheet. This should only be done by someone experienced using CSS, otherwise the results could cause harm to the layout of your site.
+
 **Code Blocks**
 
 [startCodeBlock]
@@ -76,6 +88,8 @@ This shortcode will create the start tags for a code block which will then be en
 [endCodeBlock]
 
 This shortcode will create the end tags for the code snippet started by [startCode]. If you use these two together you can create small, simple code blocks that have a black background with white text, which is the common convention. This is great for showing Terminal commands or very small code snippets (I recommend using the embed GitHub Gists shortcode for longer code samples).
+
+If you want to change any of the styling for the code blocks, please use the CSS class "pre.dobdev-code-block". From here you can change font size, font family, background color, padding and even the actual text color using your theme's (hopefully child theme's) stylesheet. This should only be done by someone experienced using CSS, otherwise the results could cause harm to the layout of your site.
 
 **Buttons**
 
@@ -118,10 +132,20 @@ If you have any shortcodes you want to suggest or to add to the plugin, please c
 
 = - 1.0 - =
 
+I've decided on an updating scheme that this plugin will now follow. Any change in a #.#.1 increment will denote minor bug fixes. Any change in a #.1.# increment will represent a new shortcode added to the plugin. Finally any change in 1.#.# will donate either a major shortcode being added or this could also go up if enough smaller shortcodes are added to the plugin.
+
+From now on Bug Fixes will all fall under #.# Changlog. However, in brackets will show the exact version number where the bug was fixed. You can see an example below under the "Bug Fixes" heading where some bug fixes are noted as being fixed in the 1.0.1 patch.
+
 **New Features**
 
 * Full 1.0 Release - I feel there is enough content now to justify it
 * Added shortcode for displaying a related posts slideshow
+
+**Bug Fixes**
+
+* Created CSS wrapper classes for the Twitch, Twitch Chat, and PDF embeds (1.0.1)
+* Changed the default with of the Twitch embed to 100% rather than 620 (1.0.1)
+* Fixed a bug where all related posts would display when the page was loaded (1.0.1)
 
 = - 0.674 - =
 

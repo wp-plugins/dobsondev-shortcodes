@@ -128,3 +128,6 @@ div.dobdev-error-msg {
   color: #D8000C;
   background-color: #FFBABA;
 }
+div.dobdev-related-posts-post {
+  display: none;
+}

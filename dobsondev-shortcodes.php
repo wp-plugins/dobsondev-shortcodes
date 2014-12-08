@@ -3,7 +3,7 @@
  * Plugin Name: DobsonDev Shortcodes
  * Plugin URI: http://dobsondev.com/portfolio/dobsondev-shortcodes/
  * Description: A collection of helpful shortcodes.
- * Version: 1.0
+ * Version: 1.0.1
  * Author: Alex Dobson
  * Author URI: http://dobsondev.com/
  * License: GPLv2
@@ -49,11 +49,14 @@ function dobsondev_shrtcode_embed_PDF($atts) {
     $height = "600";
   }
   $source_headers = @get_headers($source);
-  if (strpos($source_headers[0], '404 Not Found')) {
+  if ( strpos($source_headers[0], '404 Not Found') || $source == "Invalid Source" ) {
     return '<p> Invalid PDF source. Please check your PDF source. </p>';
   } else {
-    return '<object width="' . $width . '" height="' . $height . '" type="application/pdf" data="'
-    . $source . '"></object>';
+    $output = '<div class="dobdev-pdf-container">';
+    $output .= '<object width="' . $width . '" height="' . $height . '" type="application/pdf" data="' . $source . '"></object>';
+    $output .= '</div><!-- END .dobdev-pdf-container -->';
+
+    return $output;
   }
 }
 add_shortcode('embedPDF', 'dobsondev_shrtcode_embed_PDF');
@@ -81,30 +84,32 @@ add_shortcode('embedGist', 'dobsondev_shrtcode_create_github_gist');
 function dobsondev_shrtcode_embed_twitch($atts) {
   extract(shortcode_atts(array(
     'username' => "Invalid Username",
-    'width' => "620",
-    'height' => "378",
+    'width' => "100%",
+    'height' => "375",
   ), $atts));
   if ($username == "your-username") {
     $source = "Invalid Username";
   }
   if ($width == "###" || $height == "###") {
-    $width = "620";
-    $height = "378";
+    $width = "100%";
+    $height = "375";
   }
   $source_headers = @get_headers("http://twitch.tv/" . $username);
   if (strpos($source_headers[0], '404 Not Found')) {
     return '<p> Invalid Twitch channel name. Please check your username and channel settings on Twitch to make '
     . 'sure they are setup correctly. </p>';
   } else {
-    return '<object type="application/x-shockwave-flash" height="' . $height . '" width="' . $width
-    . '" id="live_embed_player_flash" data="http://www.twitch.tv/widgets/live_embed_player.swf?channel='
-    . $username . '" bgcolor="#000000">
-    <param name="allowFullScreen" value="true" />
-    <param name="allowScriptAccess" value="always" />
-    <param name="allowNetworking" value="all" />
-    <param name="movie" value="http://www.twitch.tv/widgets/live_embed_player.swf" />
-    <param name="flashvars" value="hostname=www.twitch.tv&channel=' . $username . '&auto_play=true&start_volume=25" />
-    </object>';
+    $output = '<div class="dobdev-twitch-container">';
+    $output .= '<object type="application/x-shockwave-flash" height="' . $height . '" width="' . $width . '" id="live_embed_player_flash" data="http://www.twitch.tv/widgets/live_embed_player.swf?channel=' . $username . '" bgcolor="#000000">';
+    $output .= '<param name="allowFullScreen" value="true" />';
+    $output .= '<param name="allowScriptAccess" value="always" />';
+    $output .= '<param name="allowNetworking" value="all" />';
+    $output .= '<param name="movie" value="http://www.twitch.tv/widgets/live_embed_player.swf" />';
+    $output .= '<param name="flashvars" value="hostname=www.twitch.tv&channel=' . $username . '&auto_play=true&start_volume=25" />';
+    $output .= '</object>';
+    $output .= '</div><!-- END .dobdev-twitch-container -->';
+
+    return $output;
   }
 }
 add_shortcode('embedTwitch', 'dobsondev_shrtcode_embed_twitch');
@@ -129,8 +134,11 @@ function dobsondev_shrtcode_embed_twitch_chat($atts) {
     return '<p> Invalid Twitch channel name. Please check your username and channel settings on Twitch to make '
     . 'sure they are setup correctly. </p>';
   } else {
-    return '<iframe frameborder="0" scrolling="no" id="chat_embed" src="http://twitch.tv/chat/embed?channel='
-    . $username . '&popout_chat=true" height="' . $height . '" width="' . $width . '"></iframe>';
+    $output = '<div class="dobdev-twitch-chat-container">';
+    $output .= '<iframe frameborder="0" scrolling="no" id="chat_embed" src="http://twitch.tv/chat/embed?channel=' . $username . '&popout_chat=true" height="' . $height . '" width="' . $width . '"></iframe>';
+    $output .= '</div><!-- END .dobdev-twitch-chat-container -->';
+
+    return $output;
   }
 }
 add_shortcode('embedTwitchChat', 'dobsondev_shrtcode_embed_twitch_chat');
@@ -154,10 +162,11 @@ function dobsondev_shrtcode_embed_youtube($atts) {
   if (strpos($source_headers[0], '404 Not Found')) {
     return '<p> Invalid YouTube video ID. Please check your YouTube video ID. </p>';
   } else {
-    return '<div class="dobdev-youtube-container">'
-    . '<iframe width="' . $width . '" height="' . $height . '" src="//www.youtube.com/embed/' . $video
-    . '" frameborder="0" allowfullscreen></iframe>'
-    . '</div>';
+    $output = '<div class="dobdev-youtube-container">';
+    $output .= '<iframe width="' . $width . '" height="' . $height . '" src="//www.youtube.com/embed/' . $video . '" frameborder="0" allowfullscreen></iframe>';
+    $output .= '</div><!-- END .dobdev-youtube-container -->';
+
+    return $output;
   }
 }
 add_shortcode('embedYouTube', 'dobsondev_shrtcode_embed_youtube');
