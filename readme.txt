@@ -139,6 +139,19 @@ If you have any shortcodes you want to suggest or to add to the plugin, please c
 
 == Changelog ==
 
+= - 1.1.0 - =
+
+The Markdown Parser used for the GitHub Repository Readme shortcode is [Parsedown](http://parsedown.org/).
+
+New Features
+
+* Added shortcode for displaying GitHub Repository README.md files
+
+Bug Fixes
+
+* Added some documentation that was missing
+* Added the tags for tested up to 4.1.1
+
 = - 1.0 - =
 
 I've decided on an updating scheme that this plugin will now follow. Any change in a #.#.1 increment will denote minor bug fixes. Any change in a #.1.# increment will represent a new shortcode added to the plugin. Finally any change in 1.#.# will donate either a major shortcode being added or this could also go up if enough smaller shortcodes are added to the plugin.
