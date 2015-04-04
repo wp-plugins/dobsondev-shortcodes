@@ -1,3 +1,14 @@
+= 1.1.0 =
+
+New Features
+
+* Added shortcode for displaying GitHub Repository README.md files
+
+Bug Fixes
+
+* Added some documentation that was missing
+* Added the tags for tested up to 4.1.1
+
 = 1.0 =
 
 I've decided on an updating scheme that this plugin will now follow. Any change in a #.#.1 increment will denote minor bug fixes. Any change in a #.1.# increment will represent a new shortcode added to the plugin. Finally any change in 1.#.# will donate either a major shortcode being added or this could also go up if enough smaller shortcodes are added to the plugin.

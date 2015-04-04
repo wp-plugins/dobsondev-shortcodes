@@ -3,7 +3,7 @@
  * Plugin Name: DobsonDev Shortcodes
  * Plugin URI: http://dobsondev.com/portfolio/dobsondev-shortcodes/
  * Description: A collection of helpful shortcodes.
- * Version: 1.0.2
+ * Version: 1.1.0
  * Author: Alex Dobson
  * Author URI: http://dobsondev.com/
  * License: GPLv2
@@ -23,6 +23,13 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
  */
+
+
+/* Define our text domain for the plugin */
+define( 'DOBSONDEV_SHRTCODE_TEXTDOMAIN',  'dobsondev-shortcodes' );
+
+/* Include Parsedown for Markdown Conversion */
+include 'libs/Parsedown.php';
 
 
 /* Enqueue the Style Sheet */
@@ -78,6 +85,30 @@ function dobsondev_shrtcode_create_github_gist($atts) {
   }
 }
 add_shortcode('embedGist', 'dobsondev_shrtcode_create_github_gist');
+
+/* Adds a shortcode for displaying GitHub README onto a page */
+function dobsondev_shrtcode_create_github_readme($atts) {
+  extract(shortcode_atts(array(
+    'owner' => "NULL",
+    'repo' => "NULL",
+  ), $atts));
+  if ($owner == "NULL" || $repo == "NULL") {
+    return '<p> Please Enter a Owner and Repo for the embedGitHubReadme ShortCode. </p>';
+  } else {
+    $curl = curl_init();
+    curl_setopt_array($curl, array(
+      CURLOPT_RETURNTRANSFER => 1,
+      CURLOPT_URL => 'https://api.github.com/repos/' . $owner . '/' . $repo . '/readme',
+      CURLOPT_USERAGENT => $repo,
+      CURLOPT_HEADER => false
+    ));
+    $response = curl_exec($curl);
+    $response_array = json_decode($response);
+    $parsedown = new Parsedown();
+    echo $parsedown->text(base64_decode($response_array->content));
+  }
+}
+add_shortcode('embedGitHubReadme', 'dobsondev_shrtcode_create_github_readme');
 
 
 /* Adds a shortcode to embed a Twitch Stream */
@@ -294,7 +325,7 @@ function dobsondev_shrtcode_related_posts($atts) {
     $output .= '<div class="dobdev-related-posts-post" id="' . $count . '">';
     $output .= '<a href="' . get_permalink( $post_id ) . '">' . get_the_post_thumbnail( $post_id, array( 130, 130 ), array( 'class' => 'alignleft dobdev-related-posts-thumbnail' ) );
     $output .= '<h4 class="dobdev-related-posts-title">' . get_post_field( 'post_title', $post_id ) . '</h4>';
-    $output .= '<p class="dobdev-related-posts-excerpt">' . get_excerpt_by_id( $post_id, $excerptLength ) . '</p>';
+    $output .= '<p class="dobdev-related-posts-excerpt">' . dobsondev_shrtcode_get_excerpt_by_id( $post_id, $excerptLength ) . '</p>';
     $output .= '</a>';
     $output .= '</div><!-- END .dobdev-related-posts-post -->';
     $count ++;
@@ -306,23 +337,5 @@ function dobsondev_shrtcode_related_posts($atts) {
 }
 add_shortcode('relatedPosts', 'dobsondev_shrtcode_related_posts');
 
-/*
-  Utility function to get the post by ID for the dobsondev_shrtcode_related_posts function
-  http://wordpress.stackexchange.com/questions/26729/get-excerpt-using-get-the-excerpt-outside-a-loop
-*/
-function get_excerpt_by_id($post_id, $excerpt_length){
-  $the_post = get_post($post_id);                            // Gets post ID
-  $the_excerpt = $the_post->post_content;                    // Gets post_content to be used as a basis for the excerpt
-  $the_excerpt = strip_tags(strip_shortcodes($the_excerpt)); // Strips tags and images
-  $words = explode(' ', $the_excerpt, $excerpt_length + 1);
-
-  if(count($words) > $excerpt_length) :
-      array_pop($words);
-      array_push($words, '…');
-      $the_excerpt = implode(' ', $words);
-  endif;
-
-  return $the_excerpt;
-}
 
 ?>
