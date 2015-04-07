@@ -3,7 +3,7 @@
  * Plugin Name: DobsonDev Shortcodes
  * Plugin URI: http://dobsondev.com/portfolio/dobsondev-shortcodes/
  * Description: A collection of helpful shortcodes.
- * Version: 1.1.0
+ * Version: 1.1.1
  * Author: Alex Dobson
  * Author URI: http://dobsondev.com/
  * License: GPLv2
@@ -103,12 +103,47 @@ function dobsondev_shrtcode_create_github_readme($atts) {
       CURLOPT_HEADER => false
     ));
     $response = curl_exec($curl);
+    // var_dump($response);
     $response_array = json_decode($response);
+    // var_dump($response_array);
     $parsedown = new Parsedown();
     echo $parsedown->text(base64_decode($response_array->content));
   }
 }
 add_shortcode('embedGitHubReadme', 'dobsondev_shrtcode_create_github_readme');
+
+
+/* Adds a shortcode for displaying GitHub README onto a page */
+function dobsondev_shrtcode_create_github_file_contents($atts) {
+  extract(shortcode_atts(array(
+    'owner' => "NULL",
+    'repo' => "NULL",
+    'path' => "NULL",
+    'markdown' => "no",
+  ), $atts));
+  if ($owner == "NULL" || $repo == "NULL" || $path == "NULL") {
+    return '<p> Please Enter a Owner, Repo and Path for the embedGitHubReadme ShortCode. </p>';
+  } else {
+    $curl = curl_init();
+    curl_setopt_array($curl, array(
+      CURLOPT_RETURNTRANSFER => 1,
+      CURLOPT_URL => 'https://api.github.com/repos/' . $owner . '/' . $repo . '/contents/' . $path,
+      CURLOPT_USERAGENT => $repo,
+      CURLOPT_HEADER => false
+    ));
+    $response = curl_exec($curl);
+    // var_dump($response);
+    $response_array = json_decode($response);
+    // var_dump($response_array);
+    if (strcasecmp($markdown, "yes") == 0) {
+      $parsedown = new Parsedown();
+      echo $parsedown->text(base64_decode($response_array->content));
+    } else {
+      echo base64_decode($response_array->content);
+    }
+  }
+}
+add_shortcode('embedGitHubContent', 'dobsondev_shrtcode_create_github_file_contents');
 
 
 /* Adds a shortcode to embed a Twitch Stream */

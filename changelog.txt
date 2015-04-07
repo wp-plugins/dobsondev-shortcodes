@@ -1,3 +1,13 @@
+= 1.1.1 =
+
+New Features
+
+* Added shortcode for displaying GitHub repository file contents.
+
+Bug Fixes
+
+* Changed some documentation errors.
+
 = 1.1.0 =
 
 New Features
