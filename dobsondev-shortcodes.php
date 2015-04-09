@@ -3,7 +3,7 @@
  * Plugin Name: DobsonDev Shortcodes
  * Plugin URI: http://dobsondev.com/portfolio/dobsondev-shortcodes/
  * Description: A collection of helpful shortcodes.
- * Version: 1.1.1
+ * Version: 1.1.2
  * Author: Alex Dobson
  * Author URI: http://dobsondev.com/
  * License: GPLv2
@@ -107,7 +107,7 @@ function dobsondev_shrtcode_create_github_readme($atts) {
     $response_array = json_decode($response);
     // var_dump($response_array);
     $parsedown = new Parsedown();
-    echo $parsedown->text(base64_decode($response_array->content));
+    return $parsedown->text(base64_decode($response_array->content));
   }
 }
 add_shortcode('embedGitHubReadme', 'dobsondev_shrtcode_create_github_readme');
@@ -137,9 +137,9 @@ function dobsondev_shrtcode_create_github_file_contents($atts) {
     // var_dump($response_array);
     if (strcasecmp($markdown, "yes") == 0) {
       $parsedown = new Parsedown();
-      echo $parsedown->text(base64_decode($response_array->content));
+      return $parsedown->text(base64_decode($response_array->content));
     } else {
-      echo base64_decode($response_array->content);
+      return base64_decode($response_array->content);
     }
   }
 }

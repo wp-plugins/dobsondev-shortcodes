@@ -6,7 +6,7 @@ License URI: http://www.gnu.org/licenses/gpl.html
 Tags: dobsondev, shortcodes, pdf, portable document format, github gists, github, gists, github readme, github project readme, github repo readme, github file contents, twitch streams, twitch, twitch tv, twitch chat, YouTube video, YouTube, inline code, code snippets, code block, programming, code examples, button, buttons, css button, css buttons, button shortcode, buttons shortcodes, user interaction, user interaction messages, info message, information message, success message, warning message, error message, related posts, related posts shortcode, jquery, jquery related posts, related posts slideshow
 Requires at least: 2.5
 Tested up to: 4.1.1
-Stable tag: 1.1.1
+Stable tag: 1.1.2
 
 Add a collection of helpful shortcodes to your site.
 
@@ -146,28 +146,19 @@ If you have any shortcodes you want to suggest or to add to the plugin, please c
 
 == Changelog ==
 
-= - 1.1.1 - =
+= - 1.1 - =
 
 New Features
 
-* Added shortcode for displaying GitHub repository file contents.
+* Added shortcode for displaying GitHub repository README.md files (1.1.0)
+* Added shortcode for displaying GitHub repository file contents (1.1.1)
 
 Bug Fixes
 
-* Changed some documentation errors.
-
-= - 1.1.0 - =
-
-The Markdown Parser used for the GitHub repository Readme shortcode is [Parsedown](http://parsedown.org/).
-
-New Features
-
-* Added shortcode for displaying GitHub repository README.md files
-
-Bug Fixes
-
-* Added some documentation that was missing
-* Added the tags for tested up to 4.1.1
+* Added some documentation that was missing (1.1.0)
+* Added the tags for tested up to WordPress 4.1.1 (1.1.0)
+* Changed some documentation errors (1.1.1)
+* Fixed a return error in the GitHub README and GitHub File Contents shortcodes (1.1.2)
 
 = - 1.0 - =
 
