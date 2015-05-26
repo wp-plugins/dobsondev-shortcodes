@@ -89,6 +89,7 @@ function dobsondev_shrtcode_create_github_gist($atts) {
 }
 add_shortcode('embedGist', 'dobsondev_shrtcode_create_github_gist');
 
+
 /* Adds a shortcode for displaying GitHub README onto a page */
 function dobsondev_shrtcode_create_github_readme($atts) {
   extract(shortcode_atts(array(
@@ -100,7 +101,7 @@ function dobsondev_shrtcode_create_github_readme($atts) {
     return '<p> Please Enter a Owner and Repo for the embedGitHubReadme ShortCode. </p>';
   } else {
     // check to see if we have a cached transient stored
-    if ( false === ( $readme_transient = get_transient( 'dobdev-t1-' . $cache_id ) ) ) {
+    if ( false === ( $readme_transient = get_transient( 'ddghr-' . md5( $owner . $repo . $cache_id ) ) ) ) {
       // we do not have a transient stored so we have to make the API call
       $curl = curl_init();
       curl_setopt_array($curl, array(
@@ -117,13 +118,11 @@ function dobsondev_shrtcode_create_github_readme($atts) {
       $output_readme = $parsedown->text(base64_decode($response_array->content));
       if ( $cache_id !== "NULL" ) {
         // set the transient so we can use it later for faster loading times
-        // var_dump('DOBSONDEV T1 TRANSIENT SET | ID = ' . $cache_id);
-        set_transient( 'dobdev-t1-' . $cache_id, $output_readme, DAY_IN_SECONDS );
+        set_transient(  'ddghr-' . md5( $owner . $repo . $cache_id ), $output_readme, DAY_IN_SECONDS );
       }
       return $output_readme;
     }
     // the transient was found so we will use it
-    // var_dump('DOBSONDEV T1 TRANSIENT USED | ID = ' . $cache_id);
     return $readme_transient;
   }
 }
@@ -143,7 +142,7 @@ function dobsondev_shrtcode_create_github_file_contents($atts) {
     return '<p> Please Enter a Owner, Repo and Path for the embedGitHubReadme ShortCode. </p>';
   } else {
     // check to see if we have a cached transient stored
-    if ( false === ( $githubfile_transient = get_transient( 'dobdev-t2-' . $cache_id ) ) ) {
+    if ( false === ( $githubfile_transient = get_transient( 'ddghf-' . md5( $owner . $repo . $path . $cache_id ) ) ) ) {
       // we do not have a transient stored so we have to make the API call
       $curl = curl_init();
       curl_setopt_array($curl, array(
@@ -161,22 +160,19 @@ function dobsondev_shrtcode_create_github_file_contents($atts) {
         $output_md_file = $parsedown->text(base64_decode($response_array->content));
         if ( $cache_id !== "NULL" ) {
           // set the transient if the cache_id is set so we can use it later for faster loading time
-          // var_dump('DOBSONDEV T2 TRANSIENT SET | ID = ' . $cache_id);
-          set_transient( 'dobdev-t2-' . $cache_id, $output_md_file, DAY_IN_SECONDS );
+          set_transient(  'ddghf-' . md5( $owner . $repo . $path . $cache_id ), $output_md_file, DAY_IN_SECONDS );
         }
         return $output_md_file;
       } else {
         $output_file = base64_decode($response_array->content);
         if ( $cache_id !== "NULL" ) {
           // set the transient if the cache_id is set so we can use it later for faster loading time
-          // var_dump('DOBSONDEV T2 TRANSIENT SET | ID = ' . $cache_id);
-          set_transient( 'dobdev-t2-' . $cache_id, $output_file, DAY_IN_SECONDS );
+          set_transient( 'ddghf-' . md5( $owner . $repo . $path . $cache_id ), $output_file, DAY_IN_SECONDS );
         }
         return $output_file;
       }
     }
     // the transient was found so we will use it
-    // var_dump('DOBSONDEV T2 TRANSIENT USED | ID = ' . $cache_id);
     return $githubfile_transient;
   }
 }
