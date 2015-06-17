@@ -3,7 +3,7 @@
  * Plugin Name: DobsonDev Shortcodes
  * Plugin URI: http://dobsondev.com/portfolio/dobsondev-shortcodes/
  * Description: A collection of helpful shortcodes.
- * Version: 1.1.4
+ * Version: 1.1.5
  * Author: Alex Dobson
  * Author URI: http://dobsondev.com/
  * License: GPLv2
@@ -164,7 +164,7 @@ function dobsondev_shrtcode_create_github_file_contents($atts) {
         }
         return $output_md_file;
       } else {
-        $output_file = base64_decode($response_array->content);
+        $output_file = nl2br(base64_decode($response_array->content));
         if ( $cache_id !== "NULL" ) {
           // set the transient if the cache_id is set so we can use it later for faster loading time
           set_transient( 'ddghf-' . md5( $owner . $repo . $path . $cache_id ), $output_file, DAY_IN_SECONDS );

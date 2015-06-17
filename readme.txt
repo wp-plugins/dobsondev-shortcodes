@@ -6,7 +6,7 @@ License URI: http://www.gnu.org/licenses/gpl.html
 Tags: dobsondev, shortcodes, pdf, portable document format, github gists, github, gists, github readme, github project readme, github repo readme, github file contents, twitch streams, twitch, twitch tv, twitch chat, YouTube video, YouTube, inline code, code snippets, code block, programming, code examples, button, buttons, css button, css buttons, button shortcode, buttons shortcodes, user interaction, user interaction messages, info message, information message, success message, warning message, error message, related posts, related posts shortcode, jquery, jquery related posts, related posts slideshow
 Requires at least: 2.5
 Tested up to: 4.2.2
-Stable tag: 1.1.4
+Stable tag: 1.1.5
 
 Add a collection of helpful shortcodes to your site.
 
@@ -166,6 +166,7 @@ Bug Fixes
 * Fixed a return error in the GitHub README and GitHub File Contents shortcodes (1.1.2)
 * Minified the CSS and JS scripts (1.1.3)
 * Fixed a naming error for the WordPress transients used in the GitHub README and File shortcodes (1.1.4)
+* Fixed a bug where GitHub file contents wouldn't display line breaks properly if they were not a markdown file - thanks to [Stephanie Locke](https://github.com/stephlocke) for catching this and letting me know (1.1.5)
 
 = - 1.0 - =
 
