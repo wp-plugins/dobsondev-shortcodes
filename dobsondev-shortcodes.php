@@ -3,7 +3,7 @@
  * Plugin Name: DobsonDev Shortcodes
  * Plugin URI: http://dobsondev.com/portfolio/dobsondev-shortcodes/
  * Description: A collection of helpful shortcodes.
- * Version: 1.1.5
+ * Version: 1.1.6
  * Author: Alex Dobson
  * Author URI: http://dobsondev.com/
  * License: GPLv2
@@ -374,6 +374,24 @@ function dobsondev_shrtcode_error_message($atts) {
 add_shortcode('errorMessage', 'dobsondev_shrtcode_error_message');
 
 
+/*
+  Utility function to get the post by ID for the dobsondev_shrtcode_related_posts function
+  http://wordpress.stackexchange.com/questions/26729/get-excerpt-using-get-the-excerpt-outside-a-loop
+*/
+function dobsondev_shrtcode_get_excerpt_by_id( $id, $length ){
+  $post = get_post($id);                            // Gets post ID
+  $excerpt = $post->post_content;                    // Gets post_content to be used as a basis for the excerpt
+  $excerpt = strip_tags(strip_shortcodes($excerpt)); // Strips tags and images
+  $words = explode(' ', $excerpt, $length + 1);
+
+  if(count($words) > $length) :
+    array_pop($words);
+    array_push($words, '…');
+    $excerpt = implode(' ', $words);
+  endif;
+
+  return $excerpt;
+}
 /* Adds a shortcode for displaying related posts based on their id */
 function dobsondev_shrtcode_related_posts($atts) {
   extract(shortcode_atts(array(
