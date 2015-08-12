@@ -5,8 +5,8 @@ License: GPLv2
 License URI: http://www.gnu.org/licenses/gpl.html
 Tags: dobsondev, shortcodes, pdf, portable document format, github gists, github, gists, github readme, github project readme, github repo readme, github file contents, twitch streams, twitch, twitch tv, twitch chat, YouTube video, YouTube, inline code, code snippets, code block, programming, code examples, button, buttons, css button, css buttons, button shortcode, buttons shortcodes, user interaction, user interaction messages, info message, information message, success message, warning message, error message, related posts, related posts shortcode, jquery, jquery related posts, related posts slideshow
 Requires at least: 2.5
-Tested up to: 4.2.4
-Stable tag: 1.1.7
+Tested up to: 4.3
+Stable tag: 1.1.8
 
 Add a collection of helpful shortcodes to your site.
 
@@ -154,21 +154,22 @@ If you have any shortcodes you want to suggest or to add to the plugin, please c
 
 New Features
 
-* Added shortcode for displaying GitHub repository README.md files (1.1.0)
-* Added shortcode for displaying GitHub repository file contents (1.1.1)
 * Added Transient Cache support for the GitHub README and File shortcodes (1.1.3)
+* Added shortcode for displaying GitHub repository file contents (1.1.1)
+* Added shortcode for displaying GitHub repository README.md files (1.1.0)
 
 Bug Fixes
 
+* Tested up to WordPress 4.3 (1.1.8)
 * Added the tags for tested up to WordPress 4.2.4 (1.1.7)
+* Fixed where the Related Posts Shortcode would brick the page it was loading on (1.1.6)
+* Fixed a bug where GitHub file contents wouldn't display line breaks properly if they were not a markdown file - thanks to [Stephanie Locke](https://github.com/stephlocke) for catching this and letting me know (1.1.5)
+* Fixed a naming error for the WordPress transients used in the GitHub README and File shortcodes (1.1.4)
+* Minified the CSS and JS scripts (1.1.3)
+* Fixed a return error in the GitHub README and GitHub File Contents shortcodes (1.1.2)
+* Changed some documentation errors (1.1.1)
 * Added some documentation that was missing (1.1.0)
 * Added the tags for tested up to WordPress 4.1.1 (1.1.0)
-* Changed some documentation errors (1.1.1)
-* Fixed a return error in the GitHub README and GitHub File Contents shortcodes (1.1.2)
-* Minified the CSS and JS scripts (1.1.3)
-* Fixed a naming error for the WordPress transients used in the GitHub README and File shortcodes (1.1.4)
-* Fixed a bug where GitHub file contents wouldn't display line breaks properly if they were not a markdown file - thanks to [Stephanie Locke](https://github.com/stephlocke) for catching this and letting me know (1.1.5)
-* Fixed where the Related Posts Shortcode would brick the page it was loading on (1.1.6)
 
 = - 1.0 - =
 
